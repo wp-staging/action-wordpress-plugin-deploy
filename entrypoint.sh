@@ -33,7 +33,7 @@ fi
 echo "ℹ︎ ASSETS_DIR: $ASSETS_DIR"
 echo "ℹ︎ WORKSPACE: $GITHUB_WORKSPACE"
 
-echo "List workspace dir"
+echo "List workspace dir 1: "
 ls $GITHUB_WORKSPACE
 
 # Get the version from the tagged commit
