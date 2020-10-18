@@ -33,6 +33,8 @@ fi
 echo "ℹ︎ ASSETS_DIR: $ASSETS_DIR"
 echo "ℹ︎ WORKSPACE: $GITHUB_WORKSPACE"
 
+ls $GITHUB_WORKSPACE
+
 # Get the version from the tagged commit
 if [[ -z "$VERSION" ]]; then
 	VERSION=${GITHUB_REF##*/}
