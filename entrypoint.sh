@@ -32,10 +32,9 @@ fi
 
 echo "ℹ︎ ASSETS_DIR: $ASSETS_DIR"
 
-WORKSPACE_DIR="$GITHUB_WORKSPACE/wp-staging-svn/trunk/"
-echo "ℹ︎ WORKSPACE_DIR: $WORKSPACE_DIR"
+echo "ℹ︎ GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
 
-echo "Run ls workspace dir: "
+echo "Run ls GITHUB_WORKSPACE dir: "
 ls $GITHUB_WORKSPACE
 
 # Get the version from the tagged commit
@@ -85,6 +84,6 @@ svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %@ > /dev/null
 svn status
 
 echo "➤ Committing files..."
-#svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+svn commit -m "Update to version $VERSION from GitHub" --no-auth-cache --non-interactive  --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
 echo "✓ Plugin deployed!"
