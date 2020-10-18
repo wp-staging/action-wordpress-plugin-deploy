@@ -31,7 +31,9 @@ if [[ -z "$ASSETS_DIR" ]]; then
 fi
 
 echo "ℹ︎ ASSETS_DIR: $ASSETS_DIR"
-echo "ℹ︎ WORKSPACE: $GITHUB_WORKSPACE"
+
+WORKSPACE_DIR="$GITHUB_WORKSPACE/wp-staging-svn/trunk/"
+echo "ℹ︎ WORKSPACE_DIR: $WORKSPACE_DIR"
 
 echo "List workspace dir 1: "
 ls $GITHUB_WORKSPACE
@@ -54,8 +56,8 @@ svn update --set-depth infinity assets
 svn update --set-depth infinity trunk
 
 echo "➤ Copying files..."
-rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE" "trunk/" --delete --delete-excluded
-rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" "$GITHUB_WORKSPACE" "tags/$VERSION/" --delete --delete-excluded
+rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" "$WORKSPACE_DIR" "trunk/" --delete --delete-excluded
+rsync -rc --exclude-from="$GITHUB_WORKSPACE/.distignore" "$WORKSPACE_DIR" "tags/$VERSION/" --delete --delete-excluded
 
 echo "ls $SVN_DIR/tags"
 ls $SVN_DIR/tags
