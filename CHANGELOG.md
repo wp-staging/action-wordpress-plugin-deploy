@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file, per [the Keep a Changelog standard](http://keepachangelog.com/).
 
-## [Unreleased] - TBD
+## [1.4.2] - 2024-10-02
+- Allow updating tags when the tag already exists.
 
 ## [1.4.1] - 2020-03-12
 ### Fixed
