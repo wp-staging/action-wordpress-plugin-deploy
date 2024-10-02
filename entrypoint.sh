@@ -56,6 +56,7 @@ svn checkout --depth immediates "$SVN_URL" "$SVN_DIR"
 cd "$SVN_DIR"
 svn update --set-depth infinity assets
 svn update --set-depth infinity trunk
+svn update --set-depth immediates tags
 
 echo "➤ Copying files..."
 if [[ -e "$GITHUB_WORKSPACE/.distignore" ]]; then
@@ -116,6 +117,12 @@ svn add . --force > /dev/null
 # SVN delete all deleted files
 # Also suppress stdout here
 svn status | grep '^\!' | sed 's/! *//' | xargs -I% svn rm %@ > /dev/null
+
+# Check if the tag already exists
+if [ -d "tags/$VERSION" ]; then
+    echo "Tag $VERSION already exists. Deleting it..."
+    svn delete "tags/$VERSION" --force
+fi
 
 # Copy tag locally to make this a single commit
 echo "➤ Copying tag..."
